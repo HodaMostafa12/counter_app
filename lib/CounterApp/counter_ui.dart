@@ -1,4 +1,3 @@
-
 import 'package:counter_app/CounterApp/counter.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +23,12 @@ class _CounterAppState extends State<CounterApp> {
     });
   }
 
+  void _reset() {
+    setState(() {
+      counter.reset();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +36,22 @@ class _CounterAppState extends State<CounterApp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("this count number"),
-            Text(counter.count.toString()),
+            Text("Counter APP",style: TextStyle(color: Colors.brown,fontSize: 30,fontWeight: FontWeight.bold),),
+            Text(counter.count.toString(),
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: _decrement, child: const Text("decrement")),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(onPressed: _reset, child: const Text("reset")),
           ],
         ),
       ),
